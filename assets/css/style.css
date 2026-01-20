@@ -211,7 +211,7 @@ h2{margin:0 0 18px; font-size:28px}
 @keyframes pulse{
   0% { opacity: 1; }
   50% { opacity: 0.6; }
-  100% { opacity: 1; }
+  100% { opacity: 1; } 
 }
 
 .hero-tagline{
