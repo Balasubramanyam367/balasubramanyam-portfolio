@@ -110,16 +110,16 @@ h2{margin:0 0 18px; font-size:28px}
 .hero-avatar{
   display: flex;
   justify-content: flex-start;
-  margin-bottom: 12px;
+  margin-bottom: 18px;
 }
 
 .avatar{
-  width: 96px;
-  height: 96px;
+  width: 160px;
+  height: 160px;
   border-radius: 50%;
   object-fit: cover;
-  border: 1px solid rgba(255,255,255,0.15);
-  box-shadow: 0 12px 30px rgba(0,0,0,0.35);
+  border: 1px solid rgba(255,255,255,0.18);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.4);
 }
 
 /* ===== Projects: one below another ===== */
