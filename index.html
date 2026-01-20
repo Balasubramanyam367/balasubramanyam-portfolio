@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Balasubramanyam | Data Engineer</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+  <!-- NAV -->
+  <header class="nav">
+    <div class="container nav-inner">
+      <div class="brand">Balasubramanyam</div>
+      <nav class="links">
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#experience">Experience</a>
+        <a href="#contact" class="btn">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <p class="badge">Data Engineer • Batch & Streaming • Reliability</p>
+      <h1>Building scalable data pipelines from ingestion to analytics.</h1>
+      <p class="sub">
+        Data Engineer with 6 months internship experience at <b>Intuit</b>.
+        I focus on upstream → downstream systems, debugging, data quality, and reliability.
+      </p>
+
+      <div class="cta">
+        <a class="btn primary" href="#projects">View Projects</a>
+        <a class="btn ghost" href="https://github.com/Balasubramanyam367" target="_blank">GitHub</a>
+        <a class="btn ghost" href="https://www.linkedin.com/in/<your-linkedin>/" target="_blank">LinkedIn</a>
+      </div>
+
+      <div class="chips">
+        <span>Spark</span><span>Airflow</span><span>Kafka</span><span>AWS</span><span>SQL</span><span>Python</span><span>dbt</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects" class="section">
+    <div class="container">
+      <h2>Featured Projects</h2>
+
+      <div class="grid">
+        <article class="card">
+          <h3>Real-Time Financial Data Pipeline</h3>
+          <p class="muted">Kafka → Spark Streaming → Bronze/Silver/Gold → Analytics</p>
+          <ul>
+            <li>Handled late-arriving + out-of-order events using event-time logic</li>
+            <li>Prevented duplicates with idempotent writes</li>
+            <li>Recovered safely via checkpoints</li>
+          </ul>
+          <div class="card-links">
+            <a href="https://github.com/Balasubramanyam367/real-time-financial-data-pipeline" target="_blank">GitHub</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <h3>Customer 360 Data Platform</h3>
+          <p class="muted">Multiple sources → Incremental ingestion → Spark → Warehouse</p>
+          <ul>
+            <li>Unified CRM + Payments + Support into one customer model</li>
+            <li>Reduced runtime using incremental processing</li>
+            <li>Added dbt-style quality checks (nulls/uniqueness)</li>
+          </ul>
+          <div class="card-links">
+            <a href="https://github.com/Balasubramanyam367/customer-360-data-platform" target="_blank">GitHub</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <h3>Data Observability Framework</h3>
+          <p class="muted">Quality checks → Metrics → Dashboards → Alerts</p>
+          <ul>
+            <li>Detected “pipeline success but data wrong” issues</li>
+            <li>Row-count + freshness anomaly checks</li>
+            <li>Alerting workflow for fast root-cause</li>
+          </ul>
+          <div class="card-links">
+            <a href="https://github.com/Balasubramanyam367/data-observability-reliability-framework" target="_blank">GitHub</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills" class="section alt">
+    <div class="container">
+      <h2>Skills</h2>
+      <div class="two">
+        <div class="mini">
+          <h4>Core</h4>
+          <p class="muted">Python, SQL, Spark, Airflow, Kafka</p>
+        </div>
+        <div class="mini">
+          <h4>Cloud & Data</h4>
+          <p class="muted">AWS (S3, Athena), Warehousing, Data Modeling, Quality</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience" class="section">
+    <div class="container">
+      <h2>Experience</h2>
+      <div class="card">
+        <h3>Data Engineer Intern — Intuit (6 months)</h3>
+        <ul>
+          <li>Worked on pipeline reliability, transformations, and debugging data issues</li>
+          <li>Improved data quality checks and investigated failures using logs/metrics</li>
+          <li>Collaborated with analytics/platform stakeholders</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="section alt">
+    <div class="container">
+      <h2>Contact</h2>
+      <p class="muted">Reach out for Data Engineer opportunities or collaborations.</p>
+      <div class="cta">
+        <a class="btn primary" href="mailto:<your-email>">Email Me</a>
+        <a class="btn ghost" href="https://www.linkedin.com/in/<your-linkedin>/" target="_blank">LinkedIn</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container muted">© <span id="y"></span> Balasubramanyam</div>
+  </footer>
+
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
