@@ -3,124 +3,190 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Balasubramanyam | Data Engineer</title>
+  <title>NITTURI BALASUBRAMANYAM | Data Engineer </title>
+  <meta name="description" content="Data Engineer portfolio: Airflow, Spark, AWS, SQL, ML training data pipelines, data quality systems." />
   <link rel="stylesheet" href="assets/css/style.css" />
 </head>
+
 <body>
   <!-- NAV -->
-  <header class="nav">
-    <div class="container nav-inner">
-      <div class="brand">Balasubramanyam</div>
-      <nav class="links">
+  <header class="header">
+    <div class="container nav">
+      <!-- <a class="brand" href="#top">Balasubramanyam</a> -->
+
+      <nav class="navlinks">
         <a href="#projects">Projects</a>
         <a href="#skills">Skills</a>
+        <a href="#certifications">Certifications</a>
         <a href="#experience">Experience</a>
-        <a href="#contact" class="btn">Contact</a>
+        <a class="btn btn-sm" href="#contact">Contact</a>
       </nav>
     </div>
   </header>
 
   <!-- HERO -->
-  
-    <section class="hero">
-    <div class="container">
+  <main id="top" class="hero">
+    <div class="container hero-grid">
+      <div class="hero-left">
+        <div class="pill">Open to Data Engineer opportunities • US</div>
 
-        <!-- Profile Image -->
-        <div class="hero-avatar">
-        <img class="avatar" src="./assets/img/Profeesional pic.png" alt="Profile photo" />
-        </div>
-        <h1 class="hero-title">DATA ENGINEER</h1>
-        <p class="hero-tagline">Batch • Streaming • Reliability</p>
+        <h1>
+          NITTURI BALASUBRAMANYAM
+          <span class="grad">Data Engineer</span>
+        </h1>
 
-
-        <!-- <p class="badge">Data Engineer • Batch & Streaming • Reliability</p> -->
-
-        <!-- <h1>Building scalable data pipelines from ingestion to analytics.</h1> -->
-
-        <p class="sub">
-        Data Engineer with 5+ years of experience building scalable data pipelines that support machine learning and AI-driven products. <b>Intuit</b>.
-        My work focuses on preparing high-quality training datasets, implementing data validation and quality checks, and enabling reliable, reproducible model training workflows using Python and Spark.
+        <p class="subtitle">
+          I build reliable ETL and streaming systems, optimize pipeline performance, and deliver analytics-ready datasets.
+          Strong focus on orchestration, data quality, and production troubleshooting.
         </p>
-        <div class="hero-contact">
-        <a href="mailto:subramaniam.nitturi@gmail.com">📧 subramaniam.nitturi@gmail.com</a>
-        <span>•</span>
-        <a href="tel:+16575320248">📞 +1 657-532-0248</a>
 
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#projects">View Projects</a>
+          <a class="btn" href="https://github.com/Balasubramanyam367" target="_blank" rel="noreferrer">GitHub</a>
+          <a class="btn" href="https://www.linkedin.com/in/nitturi/" target="_blank" rel="noreferrer">LinkedIn</a>
         </div>
 
-
-        <div class="cta">
-        <a class="btn primary" href="#projects">View Projects</a>
-        <a class="btn ghost" href="https://github.com/Balasubramanyam367" target="_blank">GitHub</a>
-        <a class="btn ghost" href="https://www.linkedin.com/in/nitturi/" target="_blank">LinkedIn</a>
+        <div class="meta">
+          <a href="mailto:subramaniam.nitturi@gmail.com">subramaniam.nitturi@gmail.com</a>
+          <span class="dot">•</span>
+          <a href="tel:+16575320248">+1 657-532-0248</a>
+          <span class="dot">•</span>
+          <span>Bay Area, CA</span>
         </div>
 
-        <div class="chips">
-        <span>Spark</span><span>Airflow</span><span>Kafka</span>
-        <span>AWS</span><span>SQL</span><span>Python</span><span>dbt</span>
+        <div class="stack">
+          <span>Airflow</span><span>Spark</span><span>Python</span><span>SQL</span>
+          <span>AWS</span><span>Kafka</span><span>Data Quality</span><span>Warehousing</span>
+        </div>
+      </div>
+
+      <div class="hero-right">
+        <div class="portrait-card">
+          <img class="portrait" src="assets/img/Profeesional pic.png" alt="Balasubramanyam profile photo">
         </div>
 
+        <div class="mini-metrics">
+          <div class="metric">
+            <div class="metric-kpi">35%</div>
+            <div class="metric-label">ETL runtime reduction</div>
+          </div>
+          <div class="metric">
+            <div class="metric-kpi">20%</div>
+            <div class="metric-label">compute cost reduction</div>
+          </div>
+          <div class="metric">
+            <div class="metric-kpi">25%</div>
+            <div class="metric-label">accuracy improvement</div>
+          </div>
+        </div>
+      </div>
     </div>
-    </section>
-
+  </main>
 
   <!-- PROJECTS -->
   <section id="projects" class="section">
     <div class="container">
-      <h2>Featured Projects</h2>
+      <div class="section-head">
+        <h2>Featured Projects</h2>
+        <p class="muted">Production-style projects with clear architecture, tradeoffs, and measurable outcomes.</p>
+      </div>
 
-      <div class="project-list">
+      <div class="grid grid-2">
+        <!-- Project 1 -->
         <article class="card">
-          <h3>Real-Time Financial Data Pipeline</h3>
-          <p class="muted">Kafka → Spark Streaming → Bronze/Silver/Gold → Analytics</p>
-          <ul>
-            <li>Handled late-arriving + out-of-order events using event-time logic</li>
-            <li>Prevented duplicates with idempotent writes</li>
-            <li>Recovered safely via checkpoints</li>
+          <div class="card-top">
+            <h3>Automated ETL Pipeline Optimization</h3>
+            <div class="tags">
+              <span>Airflow</span><span>Spark</span><span>SQL</span><span>Redshift</span><span>Docker</span>
+            </div>
+          </div>
+
+          <p class="muted">
+            End-to-end ETL with orchestration, validation, Spark transformations, and warehouse loading.
+            Includes performance tuning and failure recovery patterns.
+          </p>
+
+          <ul class="list">
+            <li>Reduced pipeline runtime by <b>35%</b> via query + Spark tuning</li>
+            <li>Cut compute cost by <b>20%</b> (partitioning, joins, caching)</li>
+            <li>Improved accuracy by <b>25%</b> with automated validation checks</li>
           </ul>
-          <div class="card-links">
-            <a href="https://github.com/Balasubramanyam367/real-time-financial-data-pipeline" target="_blank">GitHub</a>
+
+          <div class="card-actions">
+            <a class="link" href="etl-pipeline-optimization.html">View details →</a>
+            <a class="link" href="https://github.com/Balasubramanyam367" target="_blank" rel="noreferrer">GitHub →</a>
           </div>
         </article>
 
+        <!-- Project 2 -->
         <article class="card">
-          <h3>Customer 360 Data Platform</h3>
-          <p class="muted">Multiple sources → Incremental ingestion → Spark → Warehouse</p>
-          <ul>
-            <li>Unified CRM + Payments + Support into one customer model</li>
-            <li>Reduced runtime using incremental processing</li>
-            <li>Added dbt-style quality checks (nulls/uniqueness)</li>
-          </ul>
-          <div class="card-links">
-            <a href="https://github.com/Balasubramanyam367/customer-360-data-platform" target="_blank">GitHub</a>
+          <div class="card-top">
+            <h3>Real-Time Financial Data Pipeline</h3>
+            <div class="tags">
+              <span>Kafka</span><span>Spark Streaming</span><span>Lakehouse</span><span>Monitoring</span>
+            </div>
           </div>
-        </article>
-        <article class="card">
 
-          <h3>Automated ETL Pipeline Optimization</h3>
-          <p class="muted">Airflow → Validation → Spark → Warehouse (Redshift/Postgres) → Quality + Monitoring</p>
-          <ul>
-            <li>Reduced pipeline runtime by <b>35%</b> through orchestration + tuning</li>
-            <li>Cut compute cost by <b>20%</b> by refactoring SQL and Spark jobs</li>
-            <li>Automated validation checks to improve accuracy by <b>25%</b></li>
+          <p class="muted">
+            Streaming pipeline for transaction events with event-time handling, deduplication, and checkpoint-based recovery.
+          </p>
+
+          <ul class="list">
+            <li>Handled late/out-of-order events using event-time logic</li>
+            <li>Prevented duplicates via idempotent writes</li>
+            <li>Recovered reliably using checkpoints</li>
           </ul>
-          <div class="card-links">
-            <a href="etl-pipeline-optimization.html">View Details</a>
-            <span class="muted"> • </span>
-            <a href="https://github.com/Balasubramanyam367" target="_blank">GitHub</a>
+
+          <div class="card-actions">
+            <a class="link" href="https://github.com/Balasubramanyam367" target="_blank" rel="noreferrer">GitHub →</a>
           </div>
         </article>
 
+        <!-- Project 3 -->
         <article class="card">
-          <h3>Data Observability Framework</h3>
-          <p class="muted">Quality checks → Metrics → Dashboards → Alerts</p>
-          <ul>
-            <li>Detected “pipeline success but data wrong” issues</li>
-            <li>Row-count + freshness anomaly checks</li>
-            <li>Alerting workflow for fast root-cause</li>
+          <div class="card-top">
+            <h3>Customer 360 Data Platform</h3>
+            <div class="tags">
+              <span>Ingestion</span><span>Incremental</span><span>Spark</span><span>Warehouse</span>
+            </div>
+          </div>
+
+          <p class="muted">
+            Unified customer model built from multiple systems with incremental processing and quality gates.
+          </p>
+
+          <ul class="list">
+            <li>Unified CRM + payments + support into one customer model</li>
+            <li>Improved runtime using incremental processing strategy</li>
+            <li>Added quality checks (null/uniqueness/freshness)</li>
           </ul>
-          <div class="card-links">
-            <a href="https://github.com/Balasubramanyam367/data-observability-reliability-framework" target="_blank">GitHub</a>
+
+          <div class="card-actions">
+            <a class="link" href="https://github.com/Balasubramanyam367" target="_blank" rel="noreferrer">GitHub →</a>
+          </div>
+        </article>
+
+        <!-- Project 4 -->
+        <article class="card">
+          <div class="card-top">
+            <h3>Data Observability Framework</h3>
+            <div class="tags">
+              <span>DQ Checks</span><span>Metrics</span><span>Alerts</span><span>Dashboards</span>
+            </div>
+          </div>
+
+          <p class="muted">
+            Framework to detect “pipeline succeeded but data is wrong” using anomaly signals and freshness metrics.
+          </p>
+
+          <ul class="list">
+            <li>Row-count, freshness, and schema drift monitoring</li>
+            <li>Alerting workflow for fast RCA</li>
+            <li>Reduced time-to-detect for data issues</li>
+          </ul>
+
+          <div class="card-actions">
+            <a class="link" href="https://github.com/Balasubramanyam367" target="_blank" rel="noreferrer">GitHub →</a>
           </div>
         </article>
       </div>
@@ -128,114 +194,151 @@
   </section>
 
   <!-- CERTIFICATIONS -->
-<section id="certifications" class="section alt">
-  <div class="container">
-    <h2>Certifications</h2>
-
-    <div class="cert-list">
-
-      <!-- Azure -->
-      <a class="cert-item"
-         href="./assets/img/certifications/AZURE assosiate-de certificate.jpg"
-         target="_blank">
-        <div class="cert-title">
-          Microsoft Certified: Azure Data Engineer Associate
-        </div>
-        <div class="cert-action">
-          View Certificate →
-        </div>
-      </a>
-
-      <!-- Google -->
-      <a class="cert-item"
-         href="./assets/img/certifications/google certification.jpg"
-         target="_blank">
-        <div class="cert-title">
-          Google Data Analytics Professional Certificate
-        </div>
-        <div class="cert-action">
-          View Certificate →
-        </div>
-      </a>
-
-    <!-- Power BI -->
-    <a class="cert-item"
-      href="./assets/img/certifications/MS certificate Power BI Data Analyst.jpg"
-      target="_blank">
-      <div class="cert-title">
-        Microsoft Certified: Power BI Data Analyst
+  <section id="certifications" class="section section-soft">
+    <div class="container">
+      <div class="section-head">
+        <h2>Certifications</h2>
+        <p class="muted">Verified credentials. Click to view.</p>
       </div>
-      <div class="cert-action">
-        View Certificate →
-      </div>
-    </a>
-    
-  </div>
-  </div>
-</section>
 
+      <div class="grid grid-3">
+        <a class="tile" href="assets/img/certifications/AZURE assosiate-de certificate.jpg" target="_blank" rel="noreferrer">
+          <div class="tile-title">Azure Data Engineer Associate</div>
+          <div class="tile-sub">Microsoft</div>
+          <div class="tile-cta">View →</div>
+        </a>
+
+        <a class="tile" href="assets/img/certifications/google certification.jpg" target="_blank" rel="noreferrer">
+          <div class="tile-title">Google Data Analytics</div>
+          <div class="tile-sub">Google</div>
+          <div class="tile-cta">View →</div>
+        </a>
+
+        <a class="tile" href="assets/img/certifications/MS certificate Power BI Data Analyst.jpg" target="_blank" rel="noreferrer">
+          <div class="tile-title">Power BI Data Analyst</div>
+          <div class="tile-sub">Microsoft</div>
+          <div class="tile-cta">View →</div>
+        </a>
+      </div>
+    </div>
+  </section>
 
   <!-- SKILLS -->
-  <section id="skills" class="section alt">
+  <section id="skills" class="section">
     <div class="container">
-      <h2>Skills</h2>
-      <div class="two">
-        <div class="mini">
-          <h4>Core</h4>
-          <p class="muted">Python, SQL, Spark, Airflow, Kafka, ML Training Data Pipelines, LLMs</p>
+      <div class="section-head">
+        <h2>Skills</h2>
+        <p class="muted">Focused skill set aligned to modern data engineering roles.</p>
+      </div>
+
+      <div class="grid grid-2">
+        <div class="card">
+          <h3>Core</h3>
+          <p class="muted">Python, SQL, Spark/PySpark, Airflow, Kafka, ML workflows, Data Modeling, AI, ETL/ELT, Data Quality</p>
         </div>
-        <div class="mini">
-          <h4>Cloud & Data</h4>
-          <p class="muted">AWS (S3, Athena), Warehousing, Data Modeling, Quality</p>
+
+        <div class="card">
+          <h3>Cloud & Platforms</h3>
+          <p class="muted">AWS (S3, Athena, EC2), Warehousing (Redshift), CI/CD, Docker, Monitoring & Alerting</p>
         </div>
       </div>
     </div>
   </section>
-
-<nav class="links">
-  <a href="#projects">Projects</a>
-  <a href="#skills">Skills</a>
-  <a href="#certifications">Certifications</a>
-  <a href="#experience">Experience</a>
-  <a href="#contact" class="btn">Contact</a>
-</nav>
-
 
   <!-- EXPERIENCE -->
-  <section id="experience" class="section">
+  <!-- <section id="experience" class="section section-soft"> -->
     <div class="container">
-      <h2>Experience</h2>
-      <div class="card">
-        <h3>Data Engineer — Intuit </h3>
-        <ul>
-          <li>Worked on pipeline reliability, transformations, and debugging data issues</li>
-          <li>Improved data quality checks and investigated failures using logs/metrics</li>
-          <li>Collaborated with analytics/platform stakeholders</li>
-          <li>Python & Spark pipelines for ingestion, cleaning, and validation</li>
-          <li>Training dataset preparation & feature engineering for ML models</li>
-          <li>Dataset versioning and auditing for reproducibility</li>
-          <li>Automated data quality checks (schema drift, anomalies)</li>
-          <li>LLM-assisted log and anomaly summarization</li>
-        </ul>
+      <div class="section-head">
+        <h2>Experience</h2>
+        <p class="muted">Impact-focused work with production ownership.</p>
       </div>
+
+      <article class="card">
+        <div class="exp-head">
+          <div>
+            <h3>Data Engineer — Intuit (2024 - 2025)</h3>
+            <div class="muted">California, United States</div>
+          </div>
+          <div class="exp-badge">Production pipelines</div>
+        </div>
+
+        <ul class="list">
+          <li>Designed and maintain scalable data pipelines that support machine learningand analytics use cases. I work primarily with Python and Spark to ingest,clean, and process large volumes of structured, semi-structured, andunstructured data used in supervised learning workflows. My responsibilitiesinclude preparing training datasets, implementing data validation and qualitychecks, and ensuring datasets remain consistent and reproducible acrossmodel iterations. I collaborate closely with ML and analytics teams to definedata requirements and quality standards. I have also applied LLM-assistedanalysis to improve pipeline debugging and data issue triage, enabling fasterhuman review and more reliable production workflows.</li>
+        </ul>
+      </article>
+    </div>
+  </section>
+  <!-- <section id="experience" class="section section-soft"> -->
+    <div class="container">
+      <div class="section-head">
+        <!-- <h2>Experience</h2>
+        <p class="muted">Impact-focused work with production ownership.</p> -->
+      </div>
+
+      <article class="card">
+        <div class="exp-head">
+          <div>
+            <h3>Data Engineer — Ameriprise Financial (2023 - 2024) </h3>
+            <div class="muted">Minnesota, United States</div>
+          </div>
+          <div class="exp-badge">Production pipelines</div>
+        </div>
+
+        <ul class="list">
+          <li>Worked on building and scaling enterprise data pipelines that supportedanalytics and downstream ML use cases. I designed and implemented ETLworkflows using Azure Data Factory and Python to ingest, transform, andstandardize data from multiple sources. My work focused on data cleansing,validation, and monitoring to ensure datasets were reliable and ready foranalytical and model-driven consumption. I partnered with analytics and BIteams to translate business requirements into well-defined, reusable datasetsand optimized SQL transformations to improve pipeline performance and dataavailability.</li>
+        </ul>
+      </article>
+    </div>
+  </section>
+  <!-- <section id="experience" class="section section-soft"> -->
+    <div class="container">
+      <div class="section-head">
+        <!-- <h2>Experience</h2>
+        <p class="muted">Impact-focused work with production ownership.</p> -->
+      </div>
+
+      <article class="card">
+        <div class="exp-head">
+          <div>
+            <h3>Data Engineer — Michael Page (2019 - 2022) </h3>
+            <div class="muted">Hyderabad, India</div>
+          </div>
+          <div class="exp-badge">Production pipelines</div>
+        </div>
+
+        <ul class="list">
+          <li>Developed and maintained Spark-based ETL pipelines to ingest and transformdata from Oracle, SQL Server, and Teradata into HDFS, supporting large-scale analytics workloads. Worked closely with business stakeholders totranslate requirements into analytics-ready datasets, eliminating 17+ hoursper week of manual reporting. Implemented reliable database ingestion usingSqoop and orchestrated workflows with Oozie to ensure consistent and timelydata delivery. Tuned Spark jobs for large-scale transformations to improveexecution performance and job stability, and prepared curated datasets tosupport BI dashboards and operational reporting used by cross-functionalteams.</li>
+        </ul>
+      </article>
     </div>
   </section>
 
-
   <!-- CONTACT -->
-  <section id="contact" class="section alt">
+  <section id="contact" class="section">
     <div class="container">
-      <h2>Contact</h2>
-      <p class="muted">Reach out for Data Engineer opportunities or collaborations.</p>
-      <div class="cta">
-        <a class="btn primary" href="mailto:subramaniam.nitturi@gmail.com">Email Me</a>
-        <a class="btn ghost" href="https://www.linkedin.com/in/nitturi/" target="_blank">LinkedIn</a>
+      <div class="section-head">
+        <h2>Contact</h2>
+        <p class="muted">Best way to reach me: email. I respond quickly.</p>
+      </div>
+
+      <div class="contact-card">
+        <div>
+          <div class="contact-title">Let’s connect</div>
+          <div class="muted">Data Engineering • ETL • Streaming • Airflow • Spark</div>
+        </div>
+        <div class="contact-actions">
+          <a class="btn btn-primary" href="mailto:subramaniam.nitturi@gmail.com">Email</a>
+          <a class="btn" href="https://www.linkedin.com/in/nitturi/" target="_blank" rel="noreferrer">LinkedIn</a>
+        </div>
       </div>
     </div>
   </section>
 
   <footer class="footer">
-    <div class="container muted">© <span id="y"></span> Balasubramanyam</div>
+    <div class="container foot">
+      <div class="muted">© <span id="y"></span> Balasubramanyam</div>
+      <div class="muted">Built with HTML/CSS • Hosted on GitHub Pages</div>
+    </div>
   </footer>
 
   <script>
