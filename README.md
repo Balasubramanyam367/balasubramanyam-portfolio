@@ -9,13 +9,13 @@
 
 ---
 
-## 🧑‍💻 About
+##  About
 
 I'm a Data Engineer with experience building reliable ETL and streaming systems, optimizing pipeline performance, and delivering analytics-ready datasets. Strong focus on orchestration, data quality, and production troubleshooting.
 
 ---
 
-## 🗂️ What's in This Repo
+##  What's in This Repo
 
 This repository hosts my personal portfolio website — built with **HTML & CSS**, deployed on **Vercel**.
 
@@ -27,7 +27,7 @@ balasubramanyam-portfolio/
 
 ---
 
-## 🚀 Featured Projects
+##  Featured Projects
 
 ### 1. Automated ETL Pipeline Optimization
 **Stack:** Airflow · Spark · SQL · Redshift · Docker
