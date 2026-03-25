@@ -1,381 +1,854 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>NITTURI BALASUBRAMANYAM | Data Engineer </title>
-  <meta name="description" content="Data Engineer portfolio: Airflow, Spark, AWS, SQL, ML training data pipelines, data quality systems." />
-  <link rel="stylesheet" href="assets/css/style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nitturi Balasubramanyam — Data Engineer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:          #0D1117;
+      --bg-2:        #161B22;
+      --bg-3:        #1C2330;
+      --border:      #21262D;
+      --border-2:    #30363D;
+      --text-1:      #E6EDF3;
+      --text-2:      #8B949E;
+      --text-3:      #484F58;
+      --cyan:        #38BDF8;
+      --cyan-dim:    #0C2233;
+      --cyan-border: #0EA5E9;
+      --green:       #3FB950;
+      --green-dim:   #0A1F0F;
+      --amber:       #D29922;
+      --amber-dim:   #271D00;
+      --purple:      #A371F7;
+      --purple-dim:  #1A0D2E;
+      --mono:        'JetBrains Mono', 'Fira Code', monospace;
+      --sans:        'DM Sans', system-ui, sans-serif;
+      --radius:      6px;
+      --nav-h:       60px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--sans);
+      background: var(--bg);
+      color: var(--text-1);
+      font-size: 15px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed; inset: 0; z-index: 0; pointer-events: none;
+      background-image:
+        linear-gradient(var(--border) 1px, transparent 1px),
+        linear-gradient(90deg, var(--border) 1px, transparent 1px);
+      background-size: 40px 40px;
+      opacity: 0.35;
+    }
+
+    * { position: relative; z-index: 1; }
+
+    /* NAV */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(13, 17, 23, 0.88);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      height: var(--nav-h);
+      display: flex; align-items: center;
+    }
+    .nav-inner {
+      max-width: 1100px; margin: 0 auto; width: 100%;
+      padding: 0 2rem;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-logo {
+      font-family: var(--mono);
+      font-size: 15px; font-weight: 700;
+      color: var(--cyan); text-decoration: none; letter-spacing: 1px;
+    }
+    .nav-logo span { color: var(--text-2); font-weight: 300; }
+    .nav-links { display: flex; gap: 0; list-style: none; }
+    .nav-links a {
+      font-family: var(--mono);
+      font-size: 12px; font-weight: 400;
+      color: var(--text-2); text-decoration: none;
+      padding: 0 1rem;
+      border-right: 1px solid var(--border);
+      height: var(--nav-h); display: flex; align-items: center;
+      transition: color 0.2s, background 0.2s;
+    }
+    .nav-links a:first-child { border-left: 1px solid var(--border); }
+    .nav-links a:hover { color: var(--cyan); background: var(--cyan-dim); }
+    .nav-status {
+      font-family: var(--mono);
+      font-size: 11px; font-weight: 500;
+      background: var(--green-dim); color: var(--green);
+      padding: 5px 12px; border-radius: var(--radius);
+      border: 1px solid rgba(63,185,80,0.3);
+      display: flex; align-items: center; gap: 7px;
+    }
+    .nav-status::before {
+      content: ''; width: 6px; height: 6px;
+      border-radius: 50%; background: var(--green);
+      animation: blink 1.8s infinite;
+    }
+    @keyframes blink { 0%,100%{opacity:1}50%{opacity:0.2} }
+
+    /* LAYOUT */
+    section { padding: 5rem 2rem; }
+    .container { max-width: 1100px; margin: 0 auto; }
+
+    .sec-prefix {
+      font-family: var(--mono);
+      font-size: 11px; color: var(--cyan);
+      letter-spacing: 1.5px; margin-bottom: 0.4rem;
+    }
+    .sec-title {
+      font-family: var(--mono);
+      font-size: clamp(22px, 3vw, 30px);
+      font-weight: 700; color: var(--text-1);
+      margin-bottom: 0.5rem; letter-spacing: -0.5px;
+    }
+    .sec-sub { font-size: 14px; color: var(--text-2); max-width: 540px; }
+    .sec-head { margin-bottom: 3rem; }
+
+    /* HERO */
+    #hero {
+      padding: 0; border-bottom: 1px solid var(--border);
+      min-height: calc(100vh - var(--nav-h));
+      display: flex; align-items: center;
+    }
+    .hero-grid {
+      max-width: 1100px; margin: 0 auto; width: 100%;
+      padding: 5rem 2rem;
+      display: grid; grid-template-columns: 1fr 300px;
+      gap: 4rem; align-items: center;
+    }
+    .hero-prompt {
+      font-family: var(--mono);
+      font-size: 13px; color: var(--text-3);
+      margin-bottom: 1.5rem;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .hero-prompt .ps { color: var(--green); }
+    .hero-prompt .path { color: var(--cyan); }
+    .hero-name {
+      font-family: var(--mono);
+      font-size: clamp(32px, 5vw, 58px);
+      font-weight: 700; line-height: 1.05;
+      letter-spacing: -2px; color: var(--text-1); margin-bottom: 0.3rem;
+    }
+    .hero-name .hl { color: var(--cyan); }
+    .hero-role {
+      font-family: var(--mono);
+      font-size: clamp(13px, 1.8vw, 16px);
+      font-weight: 400; color: var(--text-2);
+      margin-bottom: 1.5rem; letter-spacing: 0.5px;
+    }
+    .hero-role .arrow { color: var(--cyan); margin-right: 6px; }
+    .hero-bio {
+      font-size: 15px; color: var(--text-2);
+      max-width: 500px; line-height: 1.75;
+      margin-bottom: 2rem;
+      border-left: 2px solid var(--border-2);
+      padding-left: 1rem;
+    }
+    .hero-cta { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-bottom: 2.5rem; }
+    .btn {
+      font-family: var(--mono);
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 9px 20px; border-radius: var(--radius);
+      font-size: 13px; font-weight: 500;
+      text-decoration: none; transition: all 0.18s;
+      cursor: pointer; border: 1px solid transparent;
+    }
+    .btn-primary { background: var(--cyan); color: #0D1117; border-color: var(--cyan); }
+    .btn-primary:hover { background: #7DD3FC; border-color: #7DD3FC; }
+    .btn-outline { background: transparent; color: var(--cyan); border-color: var(--cyan-border); }
+    .btn-outline:hover { background: var(--cyan-dim); }
+    .hero-meta {
+      display: flex; flex-wrap: wrap; gap: 1.25rem;
+      font-family: var(--mono); font-size: 12px; color: var(--text-3);
+    }
+    .hero-meta a {
+      color: var(--text-3); text-decoration: none;
+      display: flex; align-items: center; gap: 6px; transition: color 0.2s;
+    }
+    .hero-meta a:hover { color: var(--cyan); }
+    .hero-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 1.5rem; }
+    .htag {
+      font-family: var(--mono); font-size: 11px; color: var(--text-2);
+      background: var(--bg-2); border: 1px solid var(--border);
+      padding: 3px 10px; border-radius: var(--radius);
+    }
+    .htag.c { color: var(--cyan); border-color: var(--cyan-border); background: var(--cyan-dim); }
+
+    /* photo panel */
+    .hero-panel {
+      background: var(--bg-2); border: 1px solid var(--border);
+      border-radius: var(--radius); overflow: hidden;
+    }
+    .panel-titlebar {
+      background: var(--bg-3); border-bottom: 1px solid var(--border);
+      padding: 10px 14px; display: flex; align-items: center; gap: 8px;
+    }
+    .dr { width:10px;height:10px;border-radius:50%;background:#FF5F57; }
+    .dy { width:10px;height:10px;border-radius:50%;background:#FEBC2E; }
+    .dg { width:10px;height:10px;border-radius:50%;background:#28C840; }
+    .panel-filename { font-family:var(--mono);font-size:11px;color:var(--text-3);margin-left:6px; }
+    .panel-photo {
+      width:100%;aspect-ratio:4/5;object-fit:cover;object-position:top;display:block;
+      background:var(--bg-3);
+    }
+    .panel-photo-fallback {
+      width:100%;aspect-ratio:4/5;display:flex;align-items:center;justify-content:center;
+      font-family:var(--mono);font-size:48px;font-weight:700;color:var(--cyan);
+      background:var(--bg-3);letter-spacing:-2px;
+    }
+    .hero-stats {
+      display: grid; grid-template-columns: 1fr 1fr 1fr;
+      border-top: 1px solid var(--border);
+    }
+    .stat {
+      padding: 14px 10px; text-align: center;
+      border-right: 1px solid var(--border);
+    }
+    .stat:last-child { border-right: none; }
+    .stat-num {
+      font-family: var(--mono); font-size: 20px; font-weight: 700;
+      color: var(--cyan); line-height: 1;
+    }
+    .stat-lbl {
+      font-family: var(--mono); font-size: 9px; color: var(--text-3);
+      margin-top: 3px; line-height: 1.3; letter-spacing: 0.5px; text-transform: uppercase;
+    }
+
+    /* PROJECTS */
+    #projects { border-bottom: 1px solid var(--border); }
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1px; background: var(--border);
+      border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden;
+    }
+    .project-card {
+      background: var(--bg-2); padding: 1.5rem;
+      display: flex; flex-direction: column; transition: background 0.2s;
+    }
+    .project-card:hover { background: var(--bg-3); }
+    .project-card.featured { background: var(--bg-3); }
+    .p-header {
+      display: flex; align-items: flex-start;
+      justify-content: space-between; gap: 1rem; margin-bottom: 0.75rem;
+    }
+    .p-icon {
+      width: 34px; height: 34px; border-radius: var(--radius);
+      background: var(--cyan-dim); border: 1px solid var(--cyan-border);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 15px; flex-shrink: 0;
+    }
+    .p-icon.ai   { background: var(--purple-dim); border-color: rgba(163,113,247,0.4); }
+    .p-icon.grn  { background: var(--green-dim);  border-color: rgba(63,185,80,0.3); }
+    .p-icon.amb  { background: var(--amber-dim);  border-color: rgba(210,153,34,0.3); }
+    .p-badge {
+      font-family: var(--mono); font-size: 10px; font-weight: 500;
+      padding: 3px 8px; border-radius: var(--radius);
+    }
+    .p-badge.feat { background: var(--cyan-dim); color: var(--cyan); border: 1px solid var(--cyan-border); }
+    .p-badge.ai-b { background: var(--purple-dim); color: var(--purple); border: 1px solid rgba(163,113,247,0.3); }
+    .p-title {
+      font-family: var(--mono); font-size: 15px; font-weight: 700;
+      color: var(--text-1); margin-bottom: 0.5rem; line-height: 1.3; letter-spacing: -0.3px;
+    }
+    .p-desc { font-size: 13px; color: var(--text-2); line-height: 1.65; margin-bottom: 1rem; flex: 1; }
+    .p-outcomes { list-style: none; margin-bottom: 1.25rem; }
+    .p-outcomes li {
+      font-family: var(--mono); font-size: 12px; color: var(--text-2);
+      display: flex; align-items: flex-start; gap: 8px;
+      margin-bottom: 6px; line-height: 1.5;
+    }
+    .p-outcomes li::before { content: '+'; color: var(--green); font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .p-outcomes .val { color: var(--cyan); font-weight: 700; }
+    .p-tags { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 1rem; }
+    .p-tag {
+      font-family: var(--mono); font-size: 10px; color: var(--text-3);
+      background: var(--bg); border: 1px solid var(--border);
+      padding: 2px 7px; border-radius: var(--radius);
+    }
+    .p-links {
+      display: flex; gap: 1rem;
+      border-top: 1px solid var(--border); padding-top: 1rem; margin-top: auto;
+    }
+    .p-links a {
+      font-family: var(--mono); font-size: 12px; font-weight: 500;
+      color: var(--text-2); text-decoration: none;
+      display: flex; align-items: center; gap: 4px; transition: color 0.18s;
+    }
+    .p-links a:hover { color: var(--cyan); }
+
+    /* SKILLS */
+    #skills { border-bottom: 1px solid var(--border); }
+    .skills-terminal {
+      background: var(--bg-2); border: 1px solid var(--border);
+      border-radius: var(--radius); overflow: hidden;
+    }
+    .term-bar {
+      background: var(--bg-3); border-bottom: 1px solid var(--border);
+      padding: 10px 16px; display: flex; align-items: center; gap: 8px;
+    }
+    .term-bar-title { font-family: var(--mono); font-size: 11px; color: var(--text-3); margin-left: 8px; flex: 1; text-align: center; }
+    .term-body { padding: 1.5rem; }
+    .term-line { font-family: var(--mono); font-size: 13px; margin-bottom: 0.5rem; display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px; }
+    .term-cmd { color: var(--green); }
+    .term-arg { color: var(--cyan); }
+    .term-pills { display: flex; flex-wrap: wrap; gap: 6px; margin: 0.5rem 0 1.25rem 1rem; }
+    .term-pill {
+      font-family: var(--mono); font-size: 11px; color: var(--text-2);
+      background: var(--bg); border: 1px solid var(--border);
+      padding: 3px 10px; border-radius: var(--radius);
+    }
+    .term-pill.c { color: var(--cyan); border-color: var(--cyan-border); background: var(--cyan-dim); }
+    .term-pill.g { color: var(--green); border-color: rgba(63,185,80,0.3); background: var(--green-dim); }
+    .term-pill.p { color: var(--purple); border-color: rgba(163,113,247,0.3); background: var(--purple-dim); }
+    .term-pill.a { color: var(--amber); border-color: rgba(210,153,34,0.3); background: var(--amber-dim); }
+    .term-cursor {
+      display: inline-block; width: 8px; height: 14px;
+      background: var(--cyan); margin-left: 4px;
+      animation: cur 1s infinite; vertical-align: middle;
+    }
+    @keyframes cur { 0%,49%{opacity:1}50%,100%{opacity:0} }
+
+    /* EXPERIENCE */
+    #experience { border-bottom: 1px solid var(--border); }
+    .exp-item {
+      display: grid; grid-template-columns: 220px 1fr;
+      gap: 2rem; padding: 2.5rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .exp-item:first-child { border-top: 1px solid var(--border); }
+    .exp-period { font-family: var(--mono); font-size: 11px; color: var(--text-3); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px; }
+    .exp-company { font-family: var(--mono); font-size: 14px; font-weight: 700; color: var(--text-1); margin-bottom: 3px; }
+    .exp-location { font-family: var(--mono); font-size: 11px; color: var(--text-3); }
+    .exp-current {
+      display: inline-block; margin-top: 8px;
+      font-family: var(--mono); font-size: 10px;
+      background: var(--green-dim); color: var(--green);
+      border: 1px solid rgba(63,185,80,0.3);
+      padding: 2px 8px; border-radius: var(--radius);
+    }
+    .exp-role { font-family: var(--mono); font-size: 18px; font-weight: 700; color: var(--cyan); margin-bottom: 0.75rem; letter-spacing: -0.5px; }
+    .exp-body { font-size: 14px; color: var(--text-2); line-height: 1.75; }
+
+    /* CERTIFICATIONS */
+    #certifications { border-bottom: 1px solid var(--border); }
+    .certs-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem;
+    }
+    .cert-card {
+      background: var(--bg-2); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 1.25rem 1.5rem;
+      display: flex; align-items: center; gap: 1rem;
+      text-decoration: none; transition: border-color 0.2s, background 0.2s;
+    }
+    .cert-card:hover { border-color: var(--cyan-border); background: var(--bg-3); }
+    .cert-icon {
+      width: 40px; height: 40px; flex-shrink: 0;
+      background: var(--cyan-dim); border: 1px solid var(--cyan-border);
+      border-radius: var(--radius);
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--mono); font-size: 13px; font-weight: 700; color: var(--cyan);
+    }
+    .cert-name { font-family: var(--mono); font-size: 13px; font-weight: 500; color: var(--text-1); margin-bottom: 2px; }
+    .cert-issuer { font-family: var(--mono); font-size: 11px; color: var(--text-3); }
+    .cert-arrow { margin-left: auto; font-size: 14px; color: var(--text-3); }
+
+    /* CONTACT */
+    .contact-box {
+      background: var(--bg-2); border: 1px solid var(--border);
+      border-radius: var(--radius); overflow: hidden; max-width: 640px;
+    }
+    .contact-header {
+      background: var(--bg-3); border-bottom: 1px solid var(--border);
+      padding: 12px 20px; font-family: var(--mono); font-size: 12px; color: var(--text-3);
+      display: flex; align-items: center; gap: 8px;
+    }
+    .contact-body { padding: 2rem; }
+    .contact-title { font-family: var(--mono); font-size: 22px; font-weight: 700; color: var(--text-1); margin-bottom: 0.5rem; letter-spacing: -0.5px; }
+    .contact-sub { font-size: 14px; color: var(--text-2); line-height: 1.7; margin-bottom: 1.5rem; }
+    .contact-links { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+    .contact-row {
+      display: flex; flex-direction: column; gap: 0.75rem;
+      margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--border);
+    }
+    .contact-item {
+      font-family: var(--mono); font-size: 13px; color: var(--text-2);
+      text-decoration: none; display: flex; align-items: center; gap: 10px; transition: color 0.18s;
+    }
+    .contact-item:hover { color: var(--cyan); }
+    .contact-item .lbl { color: var(--text-3); min-width: 80px; font-size: 11px; }
+
+    /* FOOTER */
+    footer {
+      background: var(--bg-2); border-top: 1px solid var(--border);
+      padding: 1.5rem 2rem;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .footer-left { font-family: var(--mono); font-size: 12px; color: var(--text-3); }
+    .footer-left span { color: var(--cyan); }
+    .footer-right { font-family: var(--mono); font-size: 11px; color: var(--text-3); }
+
+    /* REVEAL */
+    .reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.5s ease, transform 0.5s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    /* RESPONSIVE */
+    @media (max-width: 800px) {
+      .hero-grid { grid-template-columns: 1fr; }
+      .hero-panel { display: none; }
+      .exp-item { grid-template-columns: 1fr; gap: 0.5rem; }
+      .nav-links { display: none; }
+      footer { flex-direction: column; gap: 0.5rem; text-align: center; }
+    }
+  </style>
 </head>
-
 <body>
-  <!-- NAV -->
-  <header class="header">
-    <div class="container nav">
-      <!-- <a class="brand" href="#top">Balasubramanyam</a> -->
 
-      <nav class="navlinks">
-        <a href="#projects">Projects</a>
-        <a href="#skills">Skills</a>
-        <a href="#certifications">Certifications</a>
-        <a href="#experience">Experience</a>
-        <a class="btn btn-sm" href="#contact">Contact</a>
-      </nav>
-    </div>
-  </header>
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a class="nav-logo" href="#">NB<span>_</span></a>
+    <ul class="nav-links">
+      <li><a href="#projects">// projects</a></li>
+      <li><a href="#skills">// skills</a></li>
+      <li><a href="#experience">// experience</a></li>
+      <li><a href="#certifications">// certs</a></li>
+      <li><a href="#contact">// contact</a></li>
+    </ul>
+    <div class="nav-status">available_for_hire</div>
+  </div>
+</nav>
 
-  <!-- HERO -->
-  <main id="top" class="hero">
-    <div class="container hero-grid">
-      <div class="hero-left">
-        <div class="pill">Open to Data Engineer opportunities • US</div>
-
-        <h1>
-          NITTURI BALASUBRAMANYAM
-          <span class="grad">Data Engineer</span>
-        </h1>
-
-        <p class="subtitle">
-          I build reliable ETL and streaming systems, optimize pipeline performance, and deliver analytics-ready datasets.
-          Strong focus on orchestration, data quality, and production troubleshooting.
-        </p>
-
-        <div class="hero-actions">
-          <a class="btn btn-primary" href="#projects">View Projects</a>
-          <a class="btn" href="https://github.com/Balasubramanyam367" target="_blank" rel="noreferrer">GitHub</a>
-          <a class="btn" href="https://www.linkedin.com/in/nitturi/" target="_blank" rel="noreferrer">LinkedIn</a>
-        </div>
-
-        <div class="meta">
-          <a href="mailto: nitturi.balasubramanyam@gmail.com">nitturi.balasubramanyam@gmail.com</a>
-          <span class="dot">•</span>
-          <a href="tel:+16575320248">+1 657-532-0248</a>
-          <span class="dot">•</span>
-          <span>Bay Area, CA</span>
-        </div>
-
-        <div class="stack">
-          <span>Airflow</span><span>Spark</span><span>Python</span><span>SQL</span>
-          <span>AWS</span><span>Kafka</span><span>Data Quality</span><span>Warehousing</span>
-        </div>
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-grid">
+    <div>
+      <div class="hero-prompt">
+        <span class="ps">bala@portfolio</span>
+        <span style="color:var(--border-2)">~</span>
+        <span class="path">~/bay-area</span>
+        <span style="color:var(--text-3)">$ whoami</span>
       </div>
-
-      <div class="hero-right">
-        <div class="portrait-card">
-          <img class="portrait" src="assets/img/Profeesional pic.png" alt="Balasubramanyam profile photo">
-        </div>
-
-        <div class="mini-metrics">
-          <div class="metric">
-            <div class="metric-kpi">35%</div>
-            <div class="metric-label">ETL runtime reduction</div>
-          </div>
-          <div class="metric">
-            <div class="metric-kpi">20%</div>
-            <div class="metric-label">compute cost reduction</div>
-          </div>
-          <div class="metric">
-            <div class="metric-kpi">25%</div>
-            <div class="metric-label">accuracy improvement</div>
-          </div>
-        </div>
+      <h1 class="hero-name"><span class="hl">Nitturi</span><br>Balasubramanyam</h1>
+      <p class="hero-role">
+        <span class="arrow">→</span>data_engineer<span style="color:var(--text-3);">.py</span>
+      </p>
+      <p class="hero-bio">
+        I build reliable ETL and streaming systems, optimize pipeline performance,
+        and deliver analytics-ready datasets. Strong focus on orchestration, data
+        quality, and production troubleshooting.
+      </p>
+      <div class="hero-cta">
+        <a href="#projects" class="btn btn-primary">view_projects()</a>
+        <a href="https://github.com/Balasubramanyam367" class="btn btn-outline" target="_blank">github.open() ↗</a>
+        <a href="https://www.linkedin.com/in/nitturi/" class="btn btn-outline" target="_blank">linkedin.open() ↗</a>
       </div>
-    </div>
-  </main>
-
-  <!-- PROJECTS -->
-  <section id="projects" class="section">
-    <div class="container">
-      <div class="section-head">
-        <h2>Featured Projects</h2>
-        <p class="muted">Production-style projects with clear architecture, tradeoffs, and measurable outcomes.</p>
-      </div>
-
-      <div class="grid grid-2">
-        <!-- Project 1 -->
-        <article class="card">
-          <div class="card-top">
-            <h3>Automated ETL Pipeline Optimization</h3>
-            <div class="tags">
-              <span>Airflow</span><span>Spark</span><span>SQL</span><span>Redshift</span><span>Docker</span>
-            </div>
-          </div>
-
-          <p class="muted">
-            End-to-end ETL with orchestration, validation, Spark transformations, and warehouse loading.
-            Includes performance tuning and failure recovery patterns.
-          </p>
-
-          <ul class="list">
-            <li>Reduced pipeline runtime by <b>35%</b> via query + Spark tuning</li>
-            <li>Cut compute cost by <b>20%</b> (partitioning, joins, caching)</li>
-            <li>Improved accuracy by <b>25%</b> with automated validation checks</li>
-          </ul>
-
-          <div class="card-actions">
-            <a class="link" href="etl-pipeline-optimization.html">View details →</a>
-            <a class="link" href="https://github.com/Balasubramanyam367" target="_blank" rel="noreferrer">GitHub →</a>
-          </div>
-        </article>
-
-        <!-- Project 2 -->
-        <article class="card">
-          <div class="card-top">
-            <h3>Real-Time Financial Data Pipeline</h3>
-            <div class="tags">
-              <span>Kafka</span><span>Spark Streaming</span><span>Lakehouse</span><span>Monitoring</span>
-            </div>
-          </div>
-
-          <p class="muted">
-            Streaming pipeline for transaction events with event-time handling, deduplication, and checkpoint-based recovery.
-          </p>
-
-          <ul class="list">
-            <li>Handled late/out-of-order events using event-time logic</li>
-            <li>Prevented duplicates via idempotent writes</li>
-            <li>Recovered reliably using checkpoints</li>
-          </ul>
-
-          <div class="card-actions">
-            <a class="link" href="https://github.com/Balasubramanyam367" target="_blank" rel="noreferrer">GitHub →</a>
-          </div>
-        </article>
-
-        <!-- Project 3 -->
-        <article class="card">
-          <div class="card-top">
-            <h3>Customer 360 Data Platform</h3>
-            <div class="tags">
-              <span>Ingestion</span><span>Incremental</span><span>Spark</span><span>Warehouse</span>
-            </div>
-          </div>
-
-          <p class="muted">
-            Unified customer model built from multiple systems with incremental processing and quality gates.
-          </p>
-
-          <ul class="list">
-            <li>Unified CRM + payments + support into one customer model</li>
-            <li>Improved runtime using incremental processing strategy</li>
-            <li>Added quality checks (null/uniqueness/freshness)</li>
-          </ul>
-
-          <div class="card-actions">
-            <a class="link" href="https://github.com/Balasubramanyam367" target="_blank" rel="noreferrer">GitHub →</a>
-          </div>
-        </article>
-
-        <!-- Project 4 -->
-        <article class="card">
-          <div class="card-top">
-            <h3>Data Observability Framework</h3>
-            <div class="tags">
-              <span>DQ Checks</span><span>Metrics</span><span>Alerts</span><span>Dashboards</span>
-            </div>
-          </div>
-
-          <p class="muted">
-            Framework to detect “pipeline succeeded but data is wrong” using anomaly signals and freshness metrics.
-          </p>
-
-          <ul class="list">
-            <li>Row-count, freshness, and schema drift monitoring</li>
-            <li>Alerting workflow for fast RCA</li>
-            <li>Reduced time-to-detect for data issues</li>
-          </ul>
-
-          <div class="card-actions">
-            <a class="link" href="https://github.com/Balasubramanyam367" target="_blank" rel="noreferrer">GitHub →</a>
-          </div>
-        </article>
-        <!-- Project 5 — LLM-Powered DQ Monitor -->
-        <article class="card">
-          <div class="card-top">
-            <h3>LLM-Powered Data Quality Monitor</h3>
-            <div class="tags">
-              <span>Airflow</span><span>Claude API</span><span>AWS S3</span><span>Python</span><span>Docker</span><span>Slack</span>
-            </div>
-          </div>
-
-          <p class="muted">
-            AI-augmented pipeline that detects anomalies in transaction data and delivers
-            plain-English root cause analysis to Slack — automatically, without manual log triage.
-          </p>
-
-          <ul class="list">
-            <li>Integrated <b>Anthropic Claude API</b> to explain failures across 9 custom DQ rules — root cause, business impact, and fix recommendation in under 2 seconds</li>
-            <li>Orchestrated full pipeline with <b>Airflow</b> on Docker — S3 ingest → validation → LLM explanation → Slack alert, running daily with zero manual intervention</li>
-            <li>Reduced mean-time-to-understand data issues by replacing raw JSON alerts with <b>plain-English AI-generated summaries</b> delivered directly to #data-alerts</li>
-          </ul>
-
-          <div class="card-actions">
-            <a class="link" href="https://github.com/Balasubramanyam367/llm-dq-monitor" target="_blank" rel="noreferrer">GitHub →</a>
-          </div>
-        </article>
-```
-
----
-
-## Step 4 — Update the Skills section
-
-Press **`Ctrl + F`** and search for:
-```
-ML workflows, Data Modeling, AI
-      </div>
-    </div>
-  </section>
-
-  <!-- CERTIFICATIONS -->
-  <section id="certifications" class="section section-soft">
-    <div class="container">
-      <div class="section-head">
-        <h2>Certifications</h2>
-        <p class="muted">Verified credentials. Click to view.</p>
-      </div>
-
-      <div class="grid grid-3">
-        <a class="tile" href="assets/img/certifications/AZURE assosiate-de certificate.jpg" target="_blank" rel="noreferrer">
-          <div class="tile-title">Azure Data Engineer Associate</div>
-          <div class="tile-sub">Microsoft</div>
-          <div class="tile-cta">View →</div>
+      <div class="hero-meta">
+        <a href="mailto:nitturi.balasubramanyam@gmail.com">
+          <span style="color:var(--cyan);">✉</span> nitturi.balasubramanyam@gmail.com
         </a>
-
-        <a class="tile" href="assets/img/certifications/google certification.jpg" target="_blank" rel="noreferrer">
-          <div class="tile-title">Google Data Analytics</div>
-          <div class="tile-sub">Google</div>
-          <div class="tile-cta">View →</div>
-        </a>
-
-        <a class="tile" href="assets/img/certifications/MS certificate Power BI Data Analyst.jpg" target="_blank" rel="noreferrer">
-          <div class="tile-title">Power BI Data Analyst</div>
-          <div class="tile-sub">Microsoft</div>
-          <div class="tile-cta">View →</div>
-        </a>
+        <span style="color:var(--border-2)">|</span>
+        <a href="tel:+16575320248"><span style="color:var(--cyan);">✆</span> +1 657-532-0248</a>
+        <span style="color:var(--border-2)">|</span>
+        <span>Bay Area, CA</span>
+      </div>
+      <div class="hero-tags">
+        <span class="htag c">airflow</span>
+        <span class="htag c">spark</span>
+        <span class="htag c">python</span>
+        <span class="htag">sql</span>
+        <span class="htag">aws</span>
+        <span class="htag">kafka</span>
+        <span class="htag">data_quality</span>
+        <span class="htag">warehousing</span>
+        <span class="htag">azure</span>
       </div>
     </div>
-  </section>
 
-  <!-- SKILLS -->
-  <section id="skills" class="section">
-    <div class="container">
-      <div class="section-head">
-        <h2>Skills</h2>
-        <p class="muted">Focused skill set aligned to modern data engineering roles.</p>
+    <div class="hero-panel">
+      <div class="panel-titlebar">
+        <div class="dr"></div><div class="dy"></div><div class="dg"></div>
+        <span class="panel-filename">profile.jpeg — preview</span>
       </div>
-
-      <div class="grid grid-2">
-        <div class="card">
-          <h3>Core</h3>
-          <p class="muted">Python, SQL, Spark/PySpark, Airflow, Kafka, ML workflows, Data Modeling, Claude API, AI, ETL/ELT, Data Quality</p>
+      <img
+        class="panel-photo"
+        src="assets/img/Profeesional pic.png"
+        alt="Balasubramanyam profile photo"
+        onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"
+      />
+      <div class="panel-photo-fallback" style="display:none;">NB</div>
+      <div class="hero-stats">
+        <div class="stat">
+          <div class="stat-num">35%</div>
+          <div class="stat-lbl">ETL runtime<br>reduced</div>
         </div>
-
-        <div class="card">
-          <h3>Cloud & Platforms</h3>
-          <p class="muted">AWS (S3, Athena, EC2), Warehousing (Redshift), Azure Data Factory, Azure Synapse, Azure Data Lake, CI/CD, Docker, Monitoring & Alerting</p>
+        <div class="stat">
+          <div class="stat-num">20%</div>
+          <div class="stat-lbl">compute<br>cost cut</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">25%</div>
+          <div class="stat-lbl">accuracy<br>improved</div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- EXPERIENCE -->
-  <!-- <section id="experience" class="section section-soft"> -->
-    <div class="container">
-      <div class="section-head">
-        <h2>Experience</h2>
-        <p class="muted">Impact-focused work with production ownership.</p>
-      </div>
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="container">
+    <div class="sec-head reveal">
+      <p class="sec-prefix">// projects</p>
+      <h2 class="sec-title">featured_work</h2>
+      <p class="sec-sub">Production-style projects with clear architecture, tradeoffs, and measurable outcomes.</p>
+    </div>
+    <div class="projects-grid">
 
-      <article class="card">
-        <div class="exp-head">
-          <div>
-            <h3>Data Engineer — Intuit (2024 - present)</h3>
-            <div class="muted">California, United States</div>
-          </div>
-          <div class="exp-badge">Production pipelines</div>
+      <div class="project-card featured reveal">
+        <div class="p-header">
+          <div class="p-icon">&#9889;</div>
+          <span class="p-badge feat">// featured</span>
         </div>
-
-        <ul class="list">
-          <li>Designed and maintain scalable data pipelines that support machine learningand analytics use cases. I work primarily with Python and Spark to ingest,clean, and process large volumes of structured, semi-structured, andunstructured data used in supervised learning workflows. My responsibilitiesinclude preparing training datasets, implementing data validation and qualitychecks, and ensuring datasets remain consistent and reproducible acrossmodel iterations. I collaborate closely with ML and analytics teams to definedata requirements and quality standards. I have also applied LLM-assistedanalysis to improve pipeline debugging and data issue triage, enabling fasterhuman review and more reliable production workflows.</li>
+        <div class="p-tags">
+          <span class="p-tag">airflow</span><span class="p-tag">spark</span>
+          <span class="p-tag">sql</span><span class="p-tag">redshift</span><span class="p-tag">docker</span>
+        </div>
+        <h3 class="p-title">automated_etl_pipeline</h3>
+        <p class="p-desc">End-to-end ETL with orchestration, validation, Spark transformations, and warehouse loading. Includes performance tuning and failure recovery patterns.</p>
+        <ul class="p-outcomes">
+          <li>Reduced pipeline runtime by <span class="val">35%</span> via query + Spark tuning</li>
+          <li>Cut compute cost by <span class="val">20%</span> via partitioning, joins, and caching</li>
+          <li>Improved accuracy by <span class="val">25%</span> with automated validation checks</li>
         </ul>
-      </article>
-    </div>
-  </section>
-  <!-- <section id="experience" class="section section-soft"> -->
-    <div class="container">
-      <div class="section-head">
-        <!-- <h2>Experience</h2>
-        <p class="muted">Impact-focused work with production ownership.</p> -->
+        <div class="p-links">
+          <a href="etl-pipeline-optimization.html">view_details() →</a>
+          <a href="https://github.com/Balasubramanyam367" target="_blank">github() ↗</a>
+        </div>
       </div>
 
-      <article class="card">
-        <div class="exp-head">
-          <div>
-            <h3>Data Engineer — Ameriprise Financial (2023 - 2024) </h3>
-            <div class="muted">Minnesota, United States</div>
-          </div>
-          <div class="exp-badge">Production pipelines</div>
+      <div class="project-card reveal">
+        <div class="p-header">
+          <div class="p-icon ai">&#129302;</div>
+          <span class="p-badge ai-b">// ai-powered</span>
+        </div>
+        <div class="p-tags">
+          <span class="p-tag">airflow</span><span class="p-tag">claude_api</span>
+          <span class="p-tag">aws_s3</span><span class="p-tag">docker</span><span class="p-tag">slack</span>
+        </div>
+        <h3 class="p-title">llm_dq_monitor</h3>
+        <p class="p-desc">AI-augmented pipeline that detects anomalies in transaction data and delivers plain-English root cause analysis to Slack — automatically, without manual log triage.</p>
+        <ul class="p-outcomes">
+          <li>Integrated <span class="val">Claude API</span> across 9 DQ rules — RCA in under 2 seconds</li>
+          <li>Full pipeline: S3 ingest → validation → LLM → Slack, runs daily</li>
+          <li>Replaced raw JSON alerts with <span class="val">AI-generated summaries</span></li>
+        </ul>
+        <div class="p-links">
+          <a href="https://github.com/Balasubramanyam367/llm-dq-monitor" target="_blank">github() ↗</a>
+        </div>
+      </div>
+
+      <div class="project-card reveal">
+        <div class="p-header">
+          <div class="p-icon grn">&#127754;</div>
+        </div>
+        <div class="p-tags">
+          <span class="p-tag">kafka</span><span class="p-tag">spark_streaming</span>
+          <span class="p-tag">lakehouse</span><span class="p-tag">monitoring</span>
+        </div>
+        <h3 class="p-title">realtime_financial_pipeline</h3>
+        <p class="p-desc">Streaming pipeline for transaction events with event-time handling, deduplication, and checkpoint-based recovery.</p>
+        <ul class="p-outcomes">
+          <li>Handled late/out-of-order events using <span class="val">event-time logic</span></li>
+          <li>Prevented duplicates via <span class="val">idempotent writes</span></li>
+          <li>Recovered reliably using checkpoints</li>
+        </ul>
+        <div class="p-links">
+          <a href="https://github.com/Balasubramanyam367" target="_blank">github() ↗</a>
+        </div>
+      </div>
+
+      <div class="project-card reveal">
+        <div class="p-header">
+          <div class="p-icon amb">&#128100;</div>
+        </div>
+        <div class="p-tags">
+          <span class="p-tag">ingestion</span><span class="p-tag">incremental</span>
+          <span class="p-tag">spark</span><span class="p-tag">warehouse</span>
+        </div>
+        <h3 class="p-title">customer_360_platform</h3>
+        <p class="p-desc">Unified customer model built from multiple systems with incremental processing and quality gates.</p>
+        <ul class="p-outcomes">
+          <li>Unified <span class="val">CRM + payments + support</span> into one customer model</li>
+          <li>Improved runtime using incremental processing strategy</li>
+          <li>Quality checks: null / uniqueness / freshness</li>
+        </ul>
+        <div class="p-links">
+          <a href="https://github.com/Balasubramanyam367" target="_blank">github() ↗</a>
+        </div>
+      </div>
+
+      <div class="project-card reveal">
+        <div class="p-header">
+          <div class="p-icon">&#128225;</div>
+        </div>
+        <div class="p-tags">
+          <span class="p-tag">dq_checks</span><span class="p-tag">metrics</span>
+          <span class="p-tag">alerts</span><span class="p-tag">dashboards</span>
+        </div>
+        <h3 class="p-title">data_observability_framework</h3>
+        <p class="p-desc">Framework to detect "pipeline succeeded but data is wrong" using anomaly signals and freshness metrics.</p>
+        <ul class="p-outcomes">
+          <li>Row-count, freshness, and <span class="val">schema drift</span> monitoring</li>
+          <li>Alerting workflow for fast root cause analysis</li>
+          <li>Reduced time-to-detect for data issues</li>
+        </ul>
+        <div class="p-links">
+          <a href="https://github.com/Balasubramanyam367" target="_blank">github() ↗</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="container">
+    <div class="sec-head reveal">
+      <p class="sec-prefix">// skills</p>
+      <h2 class="sec-title">tech_stack</h2>
+      <p class="sec-sub">Focused skill set aligned to modern data engineering roles.</p>
+    </div>
+    <div class="skills-terminal reveal">
+      <div class="term-bar">
+        <div class="dr"></div><div class="dy"></div><div class="dg"></div>
+        <span class="term-bar-title">skills.sh — zsh</span>
+      </div>
+      <div class="term-body">
+        <div class="term-line">
+          <span class="term-cmd">$</span>
+          <span class="term-arg">list_skills</span>
+          <span style="color:var(--text-3);">--category</span>
+          <span class="term-arg">"core"</span>
+        </div>
+        <div class="term-pills">
+          <span class="term-pill c">python</span>
+          <span class="term-pill c">sql</span>
+          <span class="term-pill c">spark / pyspark</span>
+          <span class="term-pill c">airflow</span>
+          <span class="term-pill c">kafka</span>
+          <span class="term-pill">etl / elt</span>
+          <span class="term-pill">data_quality</span>
+          <span class="term-pill">data_modeling</span>
         </div>
 
-        <ul class="list">
-          <li>Worked on building and scaling enterprise data pipelines that supportedanalytics and downstream ML use cases. I designed and implemented ETLworkflows using Azure Data Factory and Python to ingest, transform, andstandardize data from multiple sources. My work focused on data cleansing,validation, and monitoring to ensure datasets were reliable and ready foranalytical and model-driven consumption. I partnered with analytics and BIteams to translate business requirements into well-defined, reusable datasetsand optimized SQL transformations to improve pipeline performance and dataavailability.</li>
-        </ul>
-      </article>
-    </div>
-  </section>
-  <!-- <section id="experience" class="section section-soft"> -->
-    <div class="container">
-      <div class="section-head">
-        <!-- <h2>Experience</h2>
-        <p class="muted">Impact-focused work with production ownership.</p> -->
-      </div>
-
-      <article class="card">
-        <div class="exp-head">
-          <div>
-            <h3>Data Engineer — Michael Page (2019 - 2022) </h3>
-            <div class="muted">Hyderabad, India</div>
-          </div>
-          <div class="exp-badge">Production pipelines</div>
+        <div class="term-line">
+          <span class="term-cmd">$</span>
+          <span class="term-arg">list_skills</span>
+          <span style="color:var(--text-3);">--category</span>
+          <span class="term-arg">"cloud"</span>
+        </div>
+        <div class="term-pills">
+          <span class="term-pill g">aws_s3</span>
+          <span class="term-pill g">athena</span>
+          <span class="term-pill g">ec2</span>
+          <span class="term-pill g">redshift</span>
+          <span class="term-pill">azure_data_factory</span>
+          <span class="term-pill">azure_synapse</span>
+          <span class="term-pill">azure_data_lake</span>
         </div>
 
-        <ul class="list">
-          <li>Developed and maintained Spark-based ETL pipelines to ingest and transformdata from Oracle, SQL Server, and Teradata into HDFS, supporting large-scale analytics workloads. Worked closely with business stakeholders totranslate requirements into analytics-ready datasets, eliminating 17+ hoursper week of manual reporting. Implemented reliable database ingestion usingSqoop and orchestrated workflows with Oozie to ensure consistent and timelydata delivery. Tuned Spark jobs for large-scale transformations to improveexecution performance and job stability, and prepared curated datasets tosupport BI dashboards and operational reporting used by cross-functionalteams.</li>
-        </ul>
-      </article>
-    </div>
-  </section>
+        <div class="term-line">
+          <span class="term-cmd">$</span>
+          <span class="term-arg">list_skills</span>
+          <span style="color:var(--text-3);">--category</span>
+          <span class="term-arg">"devops"</span>
+        </div>
+        <div class="term-pills">
+          <span class="term-pill a">docker</span>
+          <span class="term-pill a">ci_cd</span>
+          <span class="term-pill a">monitoring</span>
+          <span class="term-pill">git</span>
+          <span class="term-pill">bash</span>
+        </div>
 
-  <!-- CONTACT -->
-  <section id="contact" class="section">
-    <div class="container">
-      <div class="section-head">
-        <h2>Contact</h2>
-        <p class="muted">Best way to reach me: email. I respond quickly.</p>
+        <div class="term-line">
+          <span class="term-cmd">$</span>
+          <span class="term-arg">list_skills</span>
+          <span style="color:var(--text-3);">--category</span>
+          <span class="term-arg">"ml_and_ai"</span>
+        </div>
+        <div class="term-pills">
+          <span class="term-pill p">claude_api</span>
+          <span class="term-pill p">llm_integration</span>
+          <span class="term-pill">ml_workflows</span>
+          <span class="term-pill">training_datasets</span>
+        </div>
+
+        <div class="term-line" style="margin-top:0.5rem;">
+          <span class="term-cmd">$</span>
+          <span style="color:var(--text-2);">_</span>
+          <span class="term-cursor"></span>
+        </div>
       </div>
+    </div>
+  </div>
+</section>
 
-      <div class="contact-card">
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="container">
+    <div class="sec-head reveal">
+      <p class="sec-prefix">// experience</p>
+      <h2 class="sec-title">work_history</h2>
+      <p class="sec-sub">Impact-focused work with production ownership.</p>
+    </div>
+    <div>
+      <div class="exp-item reveal">
         <div>
-          <div class="contact-title">Let’s connect</div>
-          <div class="muted">Data Engineering • ETL • Streaming • Airflow • Spark • AI •</div>
+          <p class="exp-period">2024 – present</p>
+          <p class="exp-company">Intuit</p>
+          <p class="exp-location">California, US</p>
+          <span class="exp-current">// current</span>
         </div>
-        <div class="contact-actions">
-          <a class="btn btn-primary" href="mailto:nitturi.balasubramanyam@gmail.com">Email</a>
-          <a class="btn" href="https://www.linkedin.com/in/nitturi/" target="_blank" rel="noreferrer">LinkedIn</a>
+        <div>
+          <h3 class="exp-role">data_engineer()</h3>
+          <p class="exp-body">Designed and maintain scalable data pipelines supporting machine learning and analytics use cases. Work primarily with Python and Spark to ingest, clean, and process large volumes of structured, semi-structured, and unstructured data used in supervised learning workflows. Responsibilities include preparing training datasets, implementing data validation and quality checks, and ensuring datasets remain consistent and reproducible across model iterations. Applied LLM-assisted analysis to improve pipeline debugging and data issue triage, enabling faster human review and more reliable production workflows.</p>
+        </div>
+      </div>
+      <div class="exp-item reveal">
+        <div>
+          <p class="exp-period">2023 – 2024</p>
+          <p class="exp-company">Ameriprise Financial</p>
+          <p class="exp-location">Minnesota, US</p>
+        </div>
+        <div>
+          <h3 class="exp-role">data_engineer()</h3>
+          <p class="exp-body">Built and scaled enterprise data pipelines supporting analytics and downstream ML use cases. Designed and implemented ETL workflows using Azure Data Factory and Python to ingest, transform, and standardize data from multiple sources. Focused on data cleansing, validation, and monitoring to ensure datasets were reliable and ready for analytical consumption. Optimized SQL transformations to improve pipeline performance and data availability.</p>
+        </div>
+      </div>
+      <div class="exp-item reveal">
+        <div>
+          <p class="exp-period">2019 – 2022</p>
+          <p class="exp-company">Michael Page</p>
+          <p class="exp-location">Hyderabad, India</p>
+        </div>
+        <div>
+          <h3 class="exp-role">data_engineer()</h3>
+          <p class="exp-body">Developed and maintained Spark-based ETL pipelines to ingest and transform data from Oracle, SQL Server, and Teradata into HDFS, supporting large-scale analytics workloads. Eliminated 17+ hours per week of manual reporting by translating business requirements into analytics-ready datasets. Implemented reliable database ingestion using Sqoop and orchestrated workflows with Oozie. Tuned Spark jobs for large-scale transformations and prepared curated datasets for BI dashboards used by cross-functional teams.</p>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <footer class="footer">
-    <div class="container foot">
-      <div class="muted">© <span id="y"></span> Balasubramanyam</div>
-      <div class="muted">Built with HTML/CSS • Hosted on GitHub Pages</div>
+<!-- CERTIFICATIONS -->
+<section id="certifications">
+  <div class="container">
+    <div class="sec-head reveal">
+      <p class="sec-prefix">// certifications</p>
+      <h2 class="sec-title">credentials[]</h2>
+      <p class="sec-sub">Verified credentials. Click to view.</p>
     </div>
-  </footer>
+    <div class="certs-grid reveal">
+      <a class="cert-card" href="assets/img/certifications/AZURE assosiate-de certificate.jpg" target="_blank">
+        <div class="cert-icon">AZ</div>
+        <div>
+          <p class="cert-name">Azure Data Engineer Associate</p>
+          <p class="cert-issuer">Microsoft</p>
+        </div>
+        <span class="cert-arrow">↗</span>
+      </a>
+      <a class="cert-card" href="assets/img/certifications/google certification.jpg" target="_blank">
+        <div class="cert-icon" style="color:var(--green);background:var(--green-dim);border-color:rgba(63,185,80,0.3);">GG</div>
+        <div>
+          <p class="cert-name">Google Data Analytics</p>
+          <p class="cert-issuer">Google</p>
+        </div>
+        <span class="cert-arrow">↗</span>
+      </a>
+      <a class="cert-card" href="assets/img/certifications/MS certificate Power BI Data Analyst.jpg" target="_blank">
+        <div class="cert-icon" style="color:var(--purple);background:var(--purple-dim);border-color:rgba(163,113,247,0.3);">BI</div>
+        <div>
+          <p class="cert-name">Power BI Data Analyst</p>
+          <p class="cert-issuer">Microsoft</p>
+        </div>
+        <span class="cert-arrow">↗</span>
+      </a>
+    </div>
+  </div>
+</section>
 
-  <script>
-    document.getElementById("y").textContent = new Date().getFullYear();
-  </script>
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="sec-head reveal">
+      <p class="sec-prefix">// contact</p>
+      <h2 class="sec-title">get_in_touch()</h2>
+    </div>
+    <div class="contact-box reveal">
+      <div class="contact-header">
+        <div class="dr"></div><div class="dy"></div><div class="dg"></div>
+        <span style="margin-left:6px;">contact.sh — new message</span>
+      </div>
+      <div class="contact-body">
+        <h3 class="contact-title">let's_connect()</h3>
+        <p class="contact-sub">Actively looking for Data Engineer roles in the Bay Area. Best way to reach me is email — I respond quickly.</p>
+        <div class="contact-links">
+          <a href="mailto:nitturi.balasubramanyam@gmail.com" class="btn btn-primary">send_email()</a>
+          <a href="https://www.linkedin.com/in/nitturi/" class="btn btn-outline" target="_blank">linkedin.open() ↗</a>
+          <a href="https://github.com/Balasubramanyam367" class="btn btn-outline" target="_blank">github.open() ↗</a>
+        </div>
+        <div class="contact-row">
+          <a class="contact-item" href="mailto:nitturi.balasubramanyam@gmail.com">
+            <span class="lbl">// email</span>nitturi.balasubramanyam@gmail.com
+          </a>
+          <a class="contact-item" href="tel:+16575320248">
+            <span class="lbl">// phone</span>+1 657-532-0248
+          </a>
+          <span class="contact-item">
+            <span class="lbl">// location</span>Bay Area, CA · Open to DE roles
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-left"><span>NB_</span> &nbsp;© 2025 Nitturi Balasubramanyam</div>
+  <div class="footer-right">built_with(html, css) · hosted_on(vercel)</div>
+</footer>
+
+<script>
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
 </body>
 </html>
