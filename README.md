@@ -81,13 +81,13 @@ Framework to detect "pipeline succeeded but data is wrong" scenarios using anoma
 
 ## 💼 Experience
 
-**Data Engineer — Intuit** *(2024 – Present | California, US)*
+**Data Engineer — Intuit** *(Jul 2024 – Present | California, US)*
 Designing and maintaining scalable data pipelines for ML and analytics use cases using Python and Spark. Preparing training datasets, implementing data validation, and applying LLM-assisted analysis to improve pipeline debugging.
 
-**Data Engineer — Ameriprise Financial** *(2023 – 2024 | Minnesota, US)*
+**Data Engineer — Ameriprise Financial** *(Dec 2023 – Jun 2024 | Minnesota, US)*
 Built and scaled enterprise data pipelines using Azure Data Factory and Python. Focused on data cleansing, validation, and monitoring to support analytics and ML consumption.
 
-**Data Engineer — Michael Page** *(2019 – 2022 | Hyderabad, India)*
+**Data Engineer — Michael Page** *(Mar 2019 – Mar 2022 | Hyderabad, India)*
 Developed Spark-based ETL pipelines ingesting from Oracle, SQL Server, and Teradata into HDFS. Eliminated 17+ hours/week of manual reporting and supported BI dashboards for cross-functional teams.
 
 ---
